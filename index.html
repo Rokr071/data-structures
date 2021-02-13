@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Data Structure</title>
+	<style type="text/css">
+		pre.source-code {
+ 		 font-family: Andale Mono, Lucida Console, Monaco, fixed, monospace; 
+  		 color: #000000;
+  		 background-color: #eee;
+  		 font-size: 12px;
+  		 border: 1px dashed #999999;
+  		 line-height: 14px;
+  		 padding: 5px;
+  		 overflow: auto;
+  		 width: 100%
+		}
+
+		.bd {
+			border: 1px solid #ccc;
+			padding: 0.01em 16px;
+			border-radius: 16px;
+			border-right-style: none;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<h2>Data Structure</h2>
+		<ol>
+			<li>
+				<h3>Array</h3>
+				<p>An array is a collection of items stored at contiguous memory locations. The idea is to store multiple items of the same type together.</p>
+
+				<p><b>Advantages of using arrays : </b></p>
+				<ul>
+					<li>Arrays allow random access to elements. This makes accessing elements by position faster.</li>
+					<li>Arrays have better cache locality that can make a pretty big difference in performance.</li>
+					<li>Arrays represent multiple data items of the same type using a single name.</li>
+				</ul>
+
+				<p><b>Disadvantages of using arrays : </b></p>
+				<ul>
+					<li>You can’t change the size i.e. once you have declared the array you can’t change its size because of static memory allocated to it.</li>
+					<li>Here Insertion and deletion are difficult as the elements are stored in consecutive memory locations and the shifting operation is costly too.</li>
+				</ul>
+				
+				<pre class="source-code"><code>int[] nums = {1 , 2, 3, 4, 9, 7, 5, 8, 6};
+
+String[] folders = {&quot;recent&quot;, &quot;starred&quot;, &quot;home&quot;, &quot;desktop&quot;, &quot;documents&quot;};
+        
+double[] rates = {5.6, 7.8, 11.2, 17.2, 8.75, 4.792};
+</code></pre>
+
+				<p>Usually, an array of characters is called a ‘string’, whereas an array of ints or floats is called simply an array.</p>
+
+				<p><b>Applications on Array : </b></p>
+				<ul>
+					<li>Array stores data elements of the same data type.</li>
+					<li>Arrays can be used for CPU scheduling.</li>
+					<li>Used to Implement other data structures like Stacks, Queues, Heaps, Hash tables, etc.</li>
+				</ul>
+
+				<div>
+					<p><b>Arrays in Java - </b></p>
+
+					<p>An array is a group of like-typed variables that are referred to by a common name. Arrays in Java work differently than they do in C/C++. Following are some important points about Java arrays.</p>
+
+					<ul>
+						<li>In Java all arrays are dynamically allocated. <b>(discussed below)</b></li>
+						<li>Since arrays are objects in Java, we can find their length using the object property length. This is different from C/C++ where we find length using sizeof. </li>
+						<li>A Java array variable can also be declared like other variables with [] after the data type.</li>
+						<li>The variables in the array are ordered and each have an index beginning from 0.</li>
+						<li>Java array can be also be used as a static field, a local variable or a method parameter.</li>
+						<li>The size of an array must be specified by an int or short value and not long.</li>
+						<li>The direct superclass of an array type is Object. </li>
+						<li>Every array type implements the interfaces Cloneable and java.io.Serializable.</li>
+					</ul>
+				</div>
+
+				<h4>Types - </h4>
+				<ul>
+					<li class="bd">
+						<h4 class="bd">1 Dimensional Array</h4>
+						<div>
+							<p>The general form of a one-dimensional array declaration is </p>
+							<pre class="source-code">type var-name[];<br>OR<br>type[] var-name;<br>var-name = new type [size];</pre>
+							<pre class="source-code">int intArray[];    //declaring array
+								<br>intArray = new int[20];  // allocating memory to array
+								<br> OR
+								<br>int[] intArray = new int[20]; // combining both statements in one</pre>
+							<p>Note : </p>
+							<ul>
+								<li>The elements in the array allocated by new will automatically be initialized to zero (for numeric types), false (for boolean), or null (for reference types).</li>
+								<li>Obtaining an array is a two-step process. First, you must declare a variable of the desired array type. Second, you must allocate the memory that will hold the array, using new, and assign it to the array variable. Thus, <b>in Java all arrays are dynamically allocated.</b></li>
+							</ul>
+
+							<p><b>Array Literal :</b> </p>
+							<p>In a situation, where the size of the array and variables of array are already known, array literals can be used.</p>
+							<p><b>Literal :</b> Any constant value which can be assigned to the variable is called as literal/constant.</p>
+							<pre class="source-code">int[] intArray = new int[]{ 1,2,3,4,5,6,7,8,9,10 }; 
+ // Declaring array literal</pre>
+ 							<ul>
+ 								<li>The length of this array determines the length of the created array.</li>
+ 								<li>There is no need to write the new int[] part in the latest versions of Java.</li>
+ 							</ul>
+ 							<p>Each element in the array is accessed via its index. The index begins with 0 and ends at (total array size)-1.</p>
+
+ 							<p><b>Arrays of Objects :</b> </p>
+ 							<p>An array of objects is created just like an array of primitive type data items in the following way.</p>
+ 							<pre class="source-code">Student[] arr = new Student[7]; //student is a user-defined class</pre>
+
+ 							<p><b>What happens if we try to access element outside the array size?</b></p>
+ 							<p>JVM throws <b>ArrayIndexOutOfBoundsException</b> to indicate that array has been accessed with an illegal index. The index is either negative or greater than or equal to size of array.</p>
+						</div>
+					</li>
+
+
+					<li class="bd">
+						<h4 class="bd">Multi-dimensional Arrays</h4>
+						<div>
+							<p>Multidimensional arrays are arrays of arrays with each element of the array holding the reference of other array.
+								<br>These are also known as Jagged Arrays.
+								<br>A multidimensional array is created by appending one set of square brackets (<b>[]</b>) <b>per dimension</b>.
+							</p>
+							<pre class="source-code">int[][] intArray = new int[10][20]; //a 2D array or matrix
+								<br>int[][][] intArray = new int[10][20][10]; //a 3D array
+								<br>// declaring and initializing 2D array (literal)
+								<br>int arr[][] = { {2,7,9},{3,6,1},{7,4,2} };</pre>
+								<p><img style="max-height: 30vh;" src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-13.jpeg"></p>
+
+								<p>Every array has an associated Class object, shared with all other arrays with the same component type.</p>
+
+								<pre class="source-code">int intArray[] = new int[3];
+									<br>byte byteArray[] = new byte[3];
+									<br>short shortsArray[] = new short[3];
+									<br>String[] strArray = new String[3];
+									<br>System.out.println(intArray.getClass());
+									<br>System.out.println(intArray.getClass().getSuperclass());
+									<br>System.out.println(byteArray.getClass());
+									<br>System.out.println(shortsArray.getClass());
+									<br>System.out.println(strArray.getClass()); </pre>
+								<p>Output</p>	
+								<pre class="source-code">class [I
+									<br>class java.lang.Object
+									<br>class [B
+									<br>class [S
+									<br>class [Ljava.lang.String;</pre>
+
+								<p><b>Explanation :</b></p>
+								<ul>
+									<li>The string “[I” is the run-time type signature for the class object “array with component type int“.</li>
+									<li>The only direct superclass of any array type is java.lang.Object.</li>
+									<li>The string “[B” is the run-time type signature for the class object “array with component type byte“.</li>
+									<li>The string “[S” is the run-time type signature for the class object “array with component type short“.</li>
+									<li>The string “[L” is the run-time type signature for the class object “array with component type of a Class”. The Class name is then followed.</li>
+								</ul>
+
+								<p>Now as we know that arrays are object of a class and direct superclass of arrays is class Object.The members of an array type are all of the following:</p>
+								<ul>
+									<li>The public final field length, which contains the number of components of the array. length may be positive or zero.</li>
+									<li>All the members inherited from class Object; the only method of Object that is not inherited is its clone method.</li>
+									<li>The public method clone(), which overrides clone method in class Object and throws no checked exceptions.</li>
+								</ul>
+								<pre class="source-code">int intArray[] = {1,2,3};
+									<br>int cloneArray[] = intArray.clone();
+									<br>// will print <b>false as deep copy is created</b>
+									<br>// <b>for one-dimensional array</b>
+									<br>System.out.println(intArray == cloneArray);</pre>
+								<p><img style="max-height: 30vh;" src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-11.jpeg"></p>
+
+								<p>A clone of a <b>multi-dimensional array</b> (like Object[][]) is a <b>“shallow copy”</b> however, which is to say that <b>it creates only a single new array</b> with each element array a reference to an original element array, but <b>subarrays are shared</b>.</p>
+
+								<pre class="source-code">int intArray[][] = {{1,2,3},{4,5}};
+									<br>int cloneArray[][] = intArray.clone();
+									<br>// will print <b>false</b>
+									<br>System.out.println(intArray == cloneArray);
+									<br>// will print <b>true as shallow copy is created</b>
+									<br>// i.e. <b>sub-arrays are shared</b>
+									<br>System.out.println(intArray[0] == cloneArray[0]);
+									<br>System.out.println(intArray[1] == cloneArray[1]);</pre>
+								<p><img style="max-height: 30vh;" src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/Blank-Diagram-Page-1-12.jpeg"></p>
+						</div>
+					</li>
+				</ul>
+				<div class="bd">
+					<p class="bd"><b>Default array values in Java :</b></p>
+
+					<p>If we <b>don’t assign values to array elements</b>, and try to <b>access them</b>, compiler <b>does not produce error</b> as in case of <b>simple variables</b>. Instead it assigns values which aren’t garbage. </p>
+
+					<p>Below are the default assigned values.</p>
+					<ul>
+						<li>boolean : false</li>
+						<li>int : 0</li>
+						<li>double : 0.0</li>
+						<li>String : null</li>
+						<li>User Defined Type: null</li>
+					</ul>
+				</div>
+
+				<div>
+					<p>references :</p>
+					<ul>
+						<li><a href="https://www.geeksforgeeks.org/array-data-structure/">GeeksForGeeks-Array-Data-Structure</a></li>
+						<li><a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html">Arrays-By-Oracle</a></li>
+					</ul>
+				</div>
+			</li>
+		</ol>
+	</div>
+
+</body>
+</html>
